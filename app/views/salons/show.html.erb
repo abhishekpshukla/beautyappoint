@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @salon.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @salon.description %>
+</p>
+
+<p>
+  <strong>Established on:</strong>
+  <%= @salon.established_on %>
+</p>
+
+<p>
+  <strong>Start at:</strong>
+  <%= @salon.start_at %>
+</p>
+
+<p>
+  <strong>Close at:</strong>
+  <%= @salon.close_at %>
+</p>
+
+<p>
+  <strong>Lunch hour:</strong>
+  <%= @salon.lunch_hour %>
+</p>
+
+<%= link_to 'Edit', edit_salon_path(@salon) %> |
+<%= link_to 'Back', salons_path %>
