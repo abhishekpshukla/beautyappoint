@@ -1,4 +1,5 @@
 ActiveAdmin.register Salon do
+  permit_params :name, :description, :established_on, :start_at, :close_at, :lunch_hour
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
