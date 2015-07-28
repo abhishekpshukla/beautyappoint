@@ -1,41 +1,46 @@
-<%= form_for(@salon) do |f| %>
-  <% if @salon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@salon.errors.count, "error") %> prohibited this salon from being saved:</h2>
-
-      <ul>
-      <% @salon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @salon, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :established_on, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :established_on, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_at, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.time_select :start_at, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :close_at, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.time_select :close_at, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :lunch_hour, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :lunch_hour, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :established_on %><br>
-    <%= f.date_select :established_on %>
-  </div>
-  <div class="field">
-    <%= f.label :start_at %><br>
-    <%= f.time_select :start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :close_at %><br>
-    <%= f.time_select :close_at %>
-  </div>
-  <div class="field">
-    <%= f.label :lunch_hour %><br>
-    <%= f.text_field :lunch_hour %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  salons_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

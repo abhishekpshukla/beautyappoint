@@ -1,35 +1,46 @@
-<h1>Listing salons</h1>
-
-<table>
+<%- model_class = Salon -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Salon %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Established on</th>
-      <th>Start at</th>
-      <th>Close at</th>
-      <th>Lunch hour</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:established_on) %></th>
+      <th><%= model_class.human_attribute_name(:start_at) %></th>
+      <th><%= model_class.human_attribute_name(:close_at) %></th>
+      <th><%= model_class.human_attribute_name(:lunch_hour) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @salons.each do |salon| %>
       <tr>
+        <td><%= salon.id %></td>
         <td><%= salon.name %></td>
         <td><%= salon.description %></td>
         <td><%= salon.established_on %></td>
         <td><%= salon.start_at %></td>
         <td><%= salon.close_at %></td>
         <td><%= salon.lunch_hour %></td>
-        <td><%= link_to 'Show', salon %></td>
-        <td><%= link_to 'Edit', edit_salon_path(salon) %></td>
-        <td><%= link_to 'Destroy', salon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l salon.created_at, format: :long %></td>
+        <td>
+          <%= link_to salon_path(salon), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to salon_path(salon), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Salon', new_salon_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_salon_path,
+            :class => 'btn btn-primary' %>

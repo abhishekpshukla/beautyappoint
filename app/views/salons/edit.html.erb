@@ -1,6 +1,5 @@
-<h1>Editing salon</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @salon %> |
-<%= link_to 'Back', salons_path %>
+<%- model_class = Salon -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Salon %></h1>
+</div>
+<%= render :partial => 'form' %>
